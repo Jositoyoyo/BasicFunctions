@@ -6,36 +6,34 @@ document.addEventListener("deviceready", onDeviceReady, false);
  
 function onDeviceReady() 
 {
-//listeners
-document.getElementById("results").innerHTML = "Ready"; 
+	//listeners
+	document.getElementById("results").innerHTML = "Ready"; 
+	document.addEventListener("online", onOnline, false);
+	document.addEventListener("offline", onOffline, false);
+	window.addEventListener("batterystatus", onBatterystatus, false);
+
 }
 document.addEventListener("menubutton", onMenuKeyDown, false);
 
-//funciones
-function onOffline()
-{
- document.getElementById("results").innerHTML = "Hola de nuevo, estas OffOnline";   
-}
+
+	function onOffline()
+	{
+	 document.getElementById("status").innerHTML = "Estas Offline";   
+	}
+	function onOffline()
+	{
+	 document.getElementById("status").innerHTML = "Estas Online";   
+	}
+
 function onMenuKeyDown()
 {
- document.getElementById("results").innerHTML = "Hola de nuevo, has pulsado el menu"; 
+ document.getElementById("results").innerHTML = "Has pulsado el menu"; 
 }
 
- // process the confirmation dialog result
-    function onConfirm(buttonIndex) {
-        alert('You selected button ' + buttonIndex);
-    }
-
-    // Show a custom confirmation dialog
-    //
-    function showConfirm() {
-        navigator.notification.confirm(
-            'You are the winner!', // message
-             onConfirm,            // callback to invoke with index of button pressed
-            'Game Over',           // title
-            ['Restart','Exit']         // buttonLabels
-        );
-    }
+onBatterystatus()
+{
+	alert("Level: " + info.level + " isPlugged: " + info.isPlugged);
+}
 
 
 
